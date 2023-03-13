@@ -35,7 +35,7 @@ const setupAudio = () => {
     const audio = new Audio(audioUrls[key])
     audio.muted = true
     audio.addEventListener("play", () => setPlaying(true))
-    audio.addEventListener("ended", () => setPlaying(false))
+    audio.addEventListener("ended", () => (setPlaying(false), resetVisuals()))
     audio.addEventListener("pause", () => setPlaying(false))
     audio.addEventListener("loadeddata", () => {
       readies.push(true)
@@ -74,8 +74,13 @@ const reset = () => {
     player.pause()
     player.currentTime = 0
     currentTime = 0;
-    audioTickElements.forEach((e) => e.classList.remove('played'));
+    resetVisuals();
   }
+}
+
+const resetVisuals = () => {
+  audioTickElements.forEach((e) => e.classList.remove('played'));
+  pointerElement.style.left = "0%";
 }
 
 const getButtonByType = (type) => {
@@ -113,6 +118,10 @@ const updateTime = () => {
   if (!playing) return;
   currentTime = audioPlayers[ORIGINAL].currentTime;
   const progress = currentTime / duration;
+  visualizeProgress(progress);
+}
+
+const visualizeProgress = (progress) => {
   pointerElement.style.left = progress * 100 + "%";
   const amountOfPlayedTicks = Math.floor((audioTickElements.length-1) * progress)
   for (let i = 0; i < amountOfTicks; i++) {
@@ -131,6 +140,7 @@ const jumpToTime = (i) => {
     player.currentTime = newTime;
   }
   currentTime = newTime;
+  visualizeProgress(progress + 0.001);
 }
 
 window.onload = () => {
