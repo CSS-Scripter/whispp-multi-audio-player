@@ -17,7 +17,7 @@ let originalButtonElement;
 let amplifiedButtonElement;
 let whisperVoiceButtonElement;
 
-const amountOfTicks = 30;
+const amountOfTicks = 60;
 let audioBarElement;
 let audioTickElements = [];
 let pointerElement;
@@ -37,7 +37,7 @@ const setupAudio = () => {
     audio.addEventListener("play", () => setPlaying(true))
     audio.addEventListener("ended", () => (setPlaying(false), resetVisuals()))
     audio.addEventListener("pause", () => setPlaying(false))
-    audio.addEventListener("loadeddata", () => {
+    audio.addEventListener("loadeddata", () => {      
       readies.push(true)
       duration = audio.duration;
       disabled = !(readies.length === Object.keys(audioUrls).length)
@@ -108,7 +108,6 @@ const setupAudioBar = () => {
     const height = (Math.random() * 80 + 20) + "%";
     tick.classList.add('tick')
     tick.style.height = height;
-    tick.addEventListener("click", () => jumpToTime(i))
     audioBarElement.appendChild(tick);
     audioTickElements.push(tick);
   }
@@ -133,14 +132,17 @@ const visualizeProgress = (progress) => {
   }
 }
 
-const jumpToTime = (i) => {
-  progress = i / amountOfTicks;
-  newTime = duration * progress;
+const jumpToTime = (e) => {
+  const bounds = audioBarElement.getBoundingClientRect()
+  const mousex = e.clientX
+  const progress = (mousex - bounds.left) / bounds.width
+  const newTime = duration * progress;
   for (let player of Object.values(audioPlayers)) {
     player.currentTime = newTime;
   }
   currentTime = newTime;
-  visualizeProgress(progress + 0.001);
+  visualizeProgress(progress);
+  console.log(progress, mousex, bounds.left, bounds.width)
 }
 
 window.onload = () => {
