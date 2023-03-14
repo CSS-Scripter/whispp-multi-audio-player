@@ -12,30 +12,29 @@
 
 <body>
   <div id="multi-audio-player">
-    <div class="top-side">
-      <div class="leftside-actions">
-        <div class="play-pause">
-          <button class="playbutton" onclick="playAudio()">
-            <img src="resources/play.svg" alt="play" />
-          </button>
-          <button class="pausebutton" style="display: none" onclick="pause()">
-            <img src="resources/pause.svg" alt="pause" />
-          </button>
-        </div>
-        <button class="resetbutton" onclick="reset()">
-          <img src="resources/skip-back.svg" alt="reset" />
+
+    <div class="leftside-actions">
+      <div class="play-pause">
+        <button class="playbutton" onclick="playAudio()">
+          <img src="resources/play.svg" alt="play" />
+        </button>
+        <button class="pausebutton" style="display: none" onclick="pause()">
+          <img src="resources/pause.svg" alt="pause" />
         </button>
       </div>
-      <div class="align-vertical">
-        <div class="audio-bar" onclick="jumpToTime(event)">
-          <span class="pointer"></span>
-        </div>
-        <div class="audio-types">
-          <button class="originalButton" onclick="switchType('original')">Original</button>
-          <button class="amplifiedButton" onclick="switchType('amplified')">Amplified</button>
-          <button class="whisperVoiceButton" onclick="switchType('whisper-voice')">Whisper Voice</button>
-        </div>
-      </div>
+      <button class="resetbutton" onclick="reset()">
+        <img src="resources/skip-back.svg" alt="reset" />
+      </button>
+    </div>
+
+    <div class="audio-bar" onclick="jumpToTime(event)">
+      <span class="pointer"></span>
+    </div>
+
+    <div class="audio-types">
+      <button class="originalButton" onclick="switchType('original')">Original</button>
+      <button class="amplifiedButton" onclick="switchType('amplified')">Amplified</button>
+      <button class="whisperVoiceButton" onclick="switchType('whisper-voice')">Whisper Voice</button>
     </div>
   </div>
 </body>

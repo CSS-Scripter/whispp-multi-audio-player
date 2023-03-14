@@ -17,7 +17,8 @@ let originalButtonElement;
 let amplifiedButtonElement;
 let whisperVoiceButtonElement;
 
-const amountOfTicks = 60;
+const spacePerTick = 5;
+let amountOfTicks;
 let audioBarElement;
 let audioTickElements = [];
 let pointerElement;
@@ -103,6 +104,8 @@ const setPlaying = (newPlaying) => {
 }
 
 const setupAudioBar = () => {
+  const availableWidth = audioBarElement.getBoundingClientRect().width;
+  amountOfTicks = Math.floor(availableWidth / spacePerTick)
   for (let i = 0; i < amountOfTicks; i++) {
     const tick = document.createElement("span")
     const height = (Math.random() * 80 + 20) + "%";
