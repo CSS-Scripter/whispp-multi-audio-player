@@ -117,10 +117,11 @@
   border-right: 1px solid #08B0A0;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 555px) {
   #multi-audio-player {
     padding: 16px;
     grid-template-columns: 80px 1fr;
+    grid-template-rows: 1fr 0.7fr;
   }
 
   #multi-audio-player .leftside-actions button {
