@@ -11,6 +11,11 @@
   max-width: 500px;
 }
 
+#multi-audio-player button {
+  font-family: 'Rubik', sans-serif;
+  cursor: pointer;
+}
+
 #multi-audio-player button img {
   width: 15px;
   height: 15px;

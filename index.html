@@ -7,12 +7,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Multi Media Player</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet">
   <script src="main.js"></script>
 </head>
 
 <body>
+
+  <!-- START MULTI AUDIO PLAYER -->
   <div id="multi-audio-player">
 
+    <!-- Left side actions: Play, Pause & Reset -->
     <div class="leftside-actions">
       <div class="play-pause">
         <button class="playbutton" onclick="playAudio()">
@@ -27,16 +31,20 @@
       </button>
     </div>
 
+    <!-- Audio Bar: displays progress of audio file -->
     <div class="audio-bar" onclick="jumpToTime(event)">
       <span class="pointer"></span>
     </div>
 
+    <!-- Audio Types: the different audio type options -->
     <div class="audio-types">
       <button class="originalButton" onclick="switchType('original')">Original</button>
       <button class="amplifiedButton" onclick="switchType('amplified')">Amplified</button>
       <button class="whisperVoiceButton" onclick="switchType('whisper-voice')">Whisper Voice</button>
     </div>
   </div>
+  <!-- END MULTI AUDIO PLAYER -->
+
 </body>
 
 </html>
