@@ -26,14 +26,16 @@
           <img src="resources/skip-back.svg" alt="reset" />
         </button>
       </div>
-      <div class="audio-bar" onclick="jumpToTime(event)">
-        <span class="pointer"></span>
+      <div class="align-vertical">
+        <div class="audio-bar" onclick="jumpToTime(event)">
+          <span class="pointer"></span>
+        </div>
+        <div class="audio-types">
+          <button class="originalButton" onclick="switchType('original')">Original</button>
+          <button class="amplifiedButton" onclick="switchType('amplified')">Amplified</button>
+          <button class="whisperVoiceButton" onclick="switchType('whisper-voice')">Whisper Voice</button>
+        </div>
       </div>
-    </div>
-    <div class="audio-types">
-      <button class="originalButton" onclick="switchType('original')">Original</button>
-      <button class="amplifiedButton" onclick="switchType('amplified')">Amplified</button>
-      <button class="whisperVoiceButton" onclick="switchType('whisper-voice')">Whisper Voice</button>
     </div>
   </div>
 </body>
