@@ -145,7 +145,6 @@ const jumpToTime = (e) => {
   }
   currentTime = newTime;
   visualizeProgress(progress);
-  console.log(progress, mousex, bounds.left, bounds.width)
 }
 
 window.onload = () => {
