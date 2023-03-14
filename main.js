@@ -13,6 +13,8 @@ let playing = false;
 let playButtonElement;
 let pauseButtonElement;
 
+let volumeSliderElement;
+
 let originalButtonElement;
 let amplifiedButtonElement;
 let whisperVoiceButtonElement;
@@ -147,6 +149,13 @@ const jumpToTime = (e) => {
   visualizeProgress(progress);
 }
 
+const setVolume = () => {
+  const volValue = volumeSliderElement.value / 100;
+  for (let player of Object.values(audioPlayers)) {
+    player.volume = volValue;
+  }
+}
+
 window.onload = () => {
   playButtonElement = document.querySelector("#multi-audio-player .playbutton");
   pauseButtonElement = document.querySelector("#multi-audio-player .pausebutton");
@@ -158,6 +167,9 @@ window.onload = () => {
   audioBarElement = document.querySelector("#multi-audio-player .audio-bar");
   pointerElement = document.querySelector("#multi-audio-player .pointer");
   setupAudioBar();
+
+  volumeSliderElement = document.querySelector("#volume");
+  volumeSliderElement.oninput = setVolume;
 
   pauseButtonElement.style.display = "none"
   switchType(ORIGINAL);

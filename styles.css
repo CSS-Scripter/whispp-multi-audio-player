@@ -2,10 +2,9 @@
   display: block;
   padding: 2em;
   border-radius: 16px;
-  background-color: rgba(0, 0, 0, .05);
   display: grid;
   grid-template-columns: 120px 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 1fr 20px 1fr;
   gap: 10px;
 
   max-width: 500px;
@@ -86,6 +85,15 @@
   background-color: #08B0A0;
 }
 
+#multi-audio-player .volume-slider {
+  grid-column: 1 / span 2;
+  width: 100%;
+}
+
+#multi-audio-player .volume-slider input[type='range'] {
+  width: 100%;
+}
+
 #multi-audio-player .audio-types {
   grid-column: 2;
   display: flex;
@@ -143,3 +151,4 @@
     font-size: 11px;
   }
 }
+
