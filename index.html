@@ -8,13 +8,13 @@
   <title>Multi Media Player</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+  <script src="audio-player.js"></script>
   <script src="main.js"></script>
 </head>
 
 <body>
-
   <!-- START MULTI AUDIO PLAYER -->
-  <div id="multi-audio-player">
+  <div id="multi-audio-player" style="display: none;">
 
     <!-- Left side actions: Play, Pause & Reset -->
     <div class="leftside-actions">
@@ -36,10 +36,6 @@
       <span class="pointer"></span>
     </div>
 
-    <div class="volume-slider">
-      <input type="range" min="1" max="100" name="volume" id="volume">
-    </div>
-
     <!-- Audio Types: the different audio type options -->
     <div class="audio-types">
       <button class="originalButton" onclick="switchType('original')">Original</button>
@@ -49,6 +45,35 @@
   </div>
   <!-- END MULTI AUDIO PLAYER -->
 
+
+
+  <!-- START MULTI AUDIO PLAYER -->
+  <div id="classed-multi-audio" class="multi-audio-player">
+
+    <!-- Left side actions: Play, Pause & Reset -->
+    <div class="leftside-actions">
+      <div class="play-pause">
+        <button class="playbutton">
+          <img src="resources/play.svg" alt="play" />
+        </button>
+        <button class="pausebutton" style="display: none">
+          <img src="resources/pause.svg" alt="pause" />
+        </button>
+      </div>
+      <button class="resetbutton">
+        <img src="resources/skip-back.svg" alt="reset" />
+      </button>
+    </div>
+
+    <!-- Audio Bar: displays progress of audio file -->
+    <div class="audio-bar">
+      <span class="pointer"></span>
+    </div>
+
+    <!-- Audio Types: the different audio type options -->
+    <div class="audio-types"></div>
+  </div>
+  <!-- END MULTI AUDIO PLAYER -->
 </body>
 
 </html>
