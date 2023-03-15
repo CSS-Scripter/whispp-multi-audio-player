@@ -13,67 +13,9 @@
 </head>
 
 <body>
-  <!-- START MULTI AUDIO PLAYER -->
-  <div id="multi-audio-player" style="display: none;">
-
-    <!-- Left side actions: Play, Pause & Reset -->
-    <div class="leftside-actions">
-      <div class="play-pause">
-        <button class="playbutton" onclick="playAudio()">
-          <img src="resources/play.svg" alt="play" />
-        </button>
-        <button class="pausebutton" style="display: none" onclick="pause()">
-          <img src="resources/pause.svg" alt="pause" />
-        </button>
-      </div>
-      <button class="resetbutton" onclick="reset()">
-        <img src="resources/skip-back.svg" alt="reset" />
-      </button>
-    </div>
-
-    <!-- Audio Bar: displays progress of audio file -->
-    <div class="audio-bar" onclick="jumpToTime(event)">
-      <span class="pointer"></span>
-    </div>
-
-    <!-- Audio Types: the different audio type options -->
-    <div class="audio-types">
-      <button class="originalButton" onclick="switchType('original')">Original</button>
-      <button class="amplifiedButton" onclick="switchType('amplified')">Amplified</button>
-      <button class="whisperVoiceButton" onclick="switchType('whisper-voice')">Whisper Voice</button>
-    </div>
-  </div>
-  <!-- END MULTI AUDIO PLAYER -->
-
-
-
-  <!-- START MULTI AUDIO PLAYER -->
-  <div id="classed-multi-audio" class="multi-audio-player">
-
-    <!-- Left side actions: Play, Pause & Reset -->
-    <div class="leftside-actions">
-      <div class="play-pause">
-        <button class="playbutton">
-          <img src="resources/play.svg" alt="play" />
-        </button>
-        <button class="pausebutton" style="display: none">
-          <img src="resources/pause.svg" alt="pause" />
-        </button>
-      </div>
-      <button class="resetbutton">
-        <img src="resources/skip-back.svg" alt="reset" />
-      </button>
-    </div>
-
-    <!-- Audio Bar: displays progress of audio file -->
-    <div class="audio-bar">
-      <span class="pointer"></span>
-    </div>
-
-    <!-- Audio Types: the different audio type options -->
-    <div class="audio-types"></div>
-  </div>
-  <!-- END MULTI AUDIO PLAYER -->
+  <div id="classed-multi-audio" class="multi-audio-player"></div>
+  <div id="classed-multi-audio2" class="multi-audio-player"></div>
+  <div id="classed-multi-audio3" class="multi-audio-player"></div>
 </body>
 
 </html>

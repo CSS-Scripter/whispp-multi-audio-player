@@ -31,8 +31,7 @@ class AudioPlayer {
 
   constructor(htmlID, urls) {
     this.rootElement = document.querySelector(`#${htmlID}`);
-    console.log(this.rootElement, `#${htmlID}`);
-    this.loadElements();
+    this.setupElements();
     this.setupPlayers(urls);
     this.setupAudioBar();
     this.switchType(Object.keys(urls)[0]);
@@ -53,22 +52,62 @@ class AudioPlayer {
     this.players[this.currentAudioType].muted = false
   }
 
-  loadElements() {
-    this.playButtonElement = this.rootElement.querySelector(".playbutton");
-    this.pauseButtonElement = this.rootElement.querySelector(".pausebutton");
-    this.resetButtonElement = this.rootElement.querySelector(".resetbutton");
+  setupElements() {
+    this.setupLeftSideActionsElements();
+    this.setupAudioBarElements();
+    this.setupAudioTypesElement();
+  }
 
-    this.playButtonElement.addEventListener("click", () => this.play());
-    this.pauseButtonElement.addEventListener("click", () => this.pause());
-    this.resetButtonElement.addEventListener("click", () => this.reset());
+  setupLeftSideActionsElements() {
+    const leftSideActions = document.createElement('div');
+    leftSideActions.classList.add('leftside-actions');
 
-    this.audioTypesElement = this.rootElement.querySelector(".audio-types")
-    this.audioBarElement = this.rootElement.querySelector(".audio-bar")
-    this.pointerElement = this.rootElement.querySelector(".pointer")
+    const playPauseActions = document.createElement('div');
+    playPauseActions.classList.add('play-pause');
 
-    this.audioBarElement.addEventListener("click", (e) => this.jumpToTime(e));
+    this.playButtonElement = this.createButton('playbutton', () => this.play(), 'resources/play.svg', 'play');
+    this.pauseButtonElement = this.createButton('pausebutton', () => this.pause(), 'resources/pause.svg', 'pause');
+    this.resetButtonElement = this.createButton('resetbutton', () => this.reset(), 'resources/skip-back.svg', 'reset');
 
     this.pauseButtonElement.style.display = "none";
+
+    playPauseActions.appendChild(this.playButtonElement);
+    playPauseActions.appendChild(this.pauseButtonElement);
+    leftSideActions.appendChild(playPauseActions);
+    leftSideActions.appendChild(this.resetButtonElement);
+
+    this.rootElement.append(leftSideActions);
+  }
+
+  setupAudioBarElements() {
+    this.audioBarElement = document.createElement('div');
+    this.audioBarElement.classList.add('audio-bar');
+    this.audioBarElement.addEventListener("click", (e) => this.jumpToTime(e));
+    
+    this.pointerElement = document.createElement('span');
+    this.pointerElement.classList.add('pointer');
+
+    this.audioBarElement.appendChild(this.pointerElement);
+    this.rootElement.appendChild(this.audioBarElement);
+  }
+
+  setupAudioTypesElement() {
+    this.audioTypesElement = document.createElement('div');
+    this.audioTypesElement.classList.add('audio-types');
+    this.rootElement.appendChild(this.audioTypesElement);
+  }
+
+  createButton(classname, onclick, src, alt) {
+    const button = document.createElement('button');
+    button.classList.add(classname);
+    button.addEventListener('click', onclick);
+
+    const image = document.createElement('img');
+    image.src = src;
+    image.alt = alt;
+    button.appendChild(image);
+
+    return button;
   }
 
   createAudio(url) {

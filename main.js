@@ -4,5 +4,7 @@ window.onload = () => {
     "amplified": "resources/whispp_nl_converted_model_A.wav",
     "whisper-voice": "resources/whispp_nl_converted_model_B.wav",
   }
-  const player = new AudioPlayer("classed-multi-audio", audioUrls);
+  new AudioPlayer("classed-multi-audio", audioUrls);
+  new AudioPlayer("classed-multi-audio2", audioUrls);
+  new AudioPlayer("classed-multi-audio3", audioUrls);
 }
