@@ -31,6 +31,7 @@ class AudioPlayer {
 
   constructor(htmlID, urls) {
     this.rootElement = document.querySelector(`#${htmlID}`);
+    if (!this.rootElement) return;
     this.setupElements();
     this.setupPlayers(urls);
     this.setupAudioBar();
